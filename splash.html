@@ -1,71 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <meta name="viewport" content="width=device-width">
+                <title>$GatewayName</title>
+                <link href="css/reset.css" rel="stylesheet">
+                <link href="css/style.css" rel="stylesheet">
+                <style>
+                        body {
+                                background: url("bg.jpg") no-repeat center center fixed;
+				background-size: cover;
+				font-size: 25px;
+				font-family: 'Lato', sans-serif;
+				font-weight: 300;
+				margin: 0;
+				color: white;
+ 				text-shadow: 2px 2px 5px red;
+                        }
 
-<head>
-	<meta charset="utf-8">
-    
-	<title>Free Wifi Sign In</title>
+                        .terms {
+                                padding: 0 20px;
+                                text-align: center;
+                        }
 
-	<!-- Google Fonts
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900" rel="stylesheet" type="text/css">
- -->	
- <link href="style.css" rel="stylesheet" type="text/css">
+                        h2 { text-align: center; font-size: 24px; }
+                        form { text-align: center; }
+                        .center { display: block; text-align: center; margin: 0 auto; }
+                        .container {
+                                margin: 10px auto;
+                                min-width: 250px;
+                                max-width: 768px;
+                        }
 
 
-	<script src="jquery.min.js"></script>
-</head>
+                        .anim { animation: OpenPage 0.5s ease-out forwards; -webkit-animation: OpenPage 0.5s ease-out forwards; transform: scale(0); }
+                        .delay1 { animation-delay: 0s; -webkit-animation-delay: 0s; }
+                        .delay2 { animation-delay: 0.3s; -webkit-animation-delay: 0.3s; }
+                        .delay3 { animation-delay: 0.6s; -webkit-animation-delay: 0.6s; }
+                        .delay4 { animation-delay: 1s; -webkit-animation-delay: 1s; }
 
-<body>
-	<div class="container">
-		<div class="top">
-			<h1 id="title" class="hidden"><span id="logo">companyname</span></h1>
-		</div>
-		<div class="login-box animated fadeInUp">
-			<div class="box-header">
-				<h2>Log In</h2>
-			</div>
-			<label for="username">Username</label>
-			<br/>
-			<input type="text" id="username">
-			<br/>
-			<label for="password">Password</label>
-			<br/>
-			<input type="password" id="password">
-			<br/>
-			<button id="button" type="submit">Sign In</button>
-			<br/>
-		</div>
-	</div>
-    
-    <form id="target" method="POST" action="$action">
-							<input type="hidden" name="mode_login">
-							<input type="hidden" name="redirect" value="$redirect">
-							<input type="hidden" name="accept_terms" value="yes">
-						</form>
-</body>
+                        @keyframes OpenPage {
+                        0% {
+                                opacity: 0;
+                                transform: scale(0, -1);
+                                margin-top: -150px;
+                        }
+                        65% {
+                                opacity: 0.2;
+                        }
+                        100% {
+                                opacity: 1;
+                                margin-top: 0;
+                                transform: scale(1);
+                        }
+                        }
 
-<script>
-	$(document).ready(function () {
-    	$('#logo').addClass('animated fadeInDown');
-    	$("input:text:visible:first").focus();
-	});
-	$('#username').focus(function() {
-		$('label[for="username"]').addClass('selected');
-	});
-	$('#username').blur(function() {
-		$('label[for="username"]').removeClass('selected');
-	});
-	$('#password').focus(function() {
-		$('label[for="password"]').addClass('selected');
-	});
-	$('#password').blur(function() {
-		$('label[for="password"]').removeClass('selected');
-	});
-	$("#button").click( function()
-           {
-			   if($("#password").val() == 'demousername' && $("#username").val() == 'demopassword'){  $( "#target" ).submit();}
-           }
-      );
-</script>
-
-</html>
+                        @-webkit-keyframes OpenPage {
+                        0% {
+                                opacity: 0;
+                                transform: scale(0, -1);                                 
+                                margin-top: -150px;                                    
+                        }                          
+                        65% {                                                                                                                         
+                                opacity: 0.2;                                        
+                        }                                                                
+                        100% {                                                           
+                                opacity: 1;                                            
+                                margin-top: 0;                                         
+                                transform: scale(1);                                                                                                  
+                        }                                                            
+                        }                                                                
+                                                                                         
+                                                                                     
+                </style>                      
+                <script type="text/javascript">                                                                                                       
+                        function toggle(element) { document.getElementById(element).style.display = (document.getElementById(element).style.display == "none") ? "" : "none"; }
+                </script>                                                                
+        </head>                                                                          
+        <body>                                                                           
+                <div id="main" class="container">                                                                                                                              
+                        <div id="splash">           
+                                <h2 class="anim delay1">$GatewayName</h2>
+                                <div class="center anim delay2"><b>Wifi Network & Internet conditions:</b></div>
+                                <div class="terms anim delay3">
+                                        <!-- "div" is where you put your Text -->
+                                        You are solely responsible for any illegal activities once you click the "OK, I AGREE" button. <br />                                  
+                                        We are not responsible for faulty operation of your computer or equipment. You may be asked to stop using your equipment.
+                                        This banner will appear again periodically.
+                                        To renew your access time, you must agree once again every week. <br /><br />
+                                        Thank You, and Enjoy!                                                                                
+                                        <br /><br />                                                                                                             
+                                </div>                                                                                                                                         
+                                <form method="POST" action="$action" class="anim delay4">                                             
+                                        <input type="hidden" name="mode_login">
+                                        <input type="hidden" name="redirect" value="$redirect">
+                                        <input type="hidden" name="accept_terms" value="yes">                                                
+                                        <button class="btn btn-primary" type="submit" value="Submit"><i class="icon-check"></i> Ok, I Agree!</button>            
+                                </form>                                                                                                                                        
+                        </div>                                                                                                        
+                </div>                                                                       
+        </body>                            
